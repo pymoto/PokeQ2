@@ -208,7 +208,7 @@ export function ForeignLanguageQuizScreen({ navigation, route }) {
       <Text>このポケモンはなに？</Text>
       <Text>現在の得点：{totalScore}点</Text>
       <Text>正解すると{thisScore}点獲得</Text>
-      <Text>{trueOrFalse}</Text>
+      <Text style={{ ...styles.TorF, color: trueOrFalse === '正解！' ? 'red' : 'blue' }}>{trueOrFalse}</Text>
       <Text style={styles.text}>英語名：{pokebunrui.enName}</Text>
       <Text style={styles.text}>中国語名：{chineseName}</Text>
 
@@ -279,6 +279,11 @@ const styles = StyleSheet.create({
     margin: 10,
     fontSize: 16,
     color: '#333',
+  },
+  TorF: {
+    margin: 20,
+    fontSize: 26,
+    fontWeight: 'bold',
   },
   questionWrapper: {
     marginVertical: 20,

@@ -222,18 +222,19 @@ function QuizScreen({navigation, route}) {
       navigation.navigate('Result', {totalScore});
     }else {
       getPokebunrui(setPokebunrui, questionRange);
-      setCorrectAnswer('')
-      setCorrectAnswerDisplay('none')
+      setCorrectAnswer('');
+      setCorrectAnswerDisplay('none');
       setHint1('');
       setHint2('');
       setBtnBackgroundColor('gray');
       setInputText('');
       setTrueOrFalse('');
-      setAnswerBtnDisabled(false)
+      setAnswerBtnDisabled(false);
       setNextQuizDisabled(true);
       setHintButton('ヒント１を見る');
-      setThisScore(5)
-      setQuizCount(quizCount + 1)
+      setThisScore(5);
+      setQuizCount(quizCount + 1);
+      setTrueOrFalse('');
       if (quizCount === 9) {
         setNextQuizText('次に進む');
       }
@@ -247,7 +248,7 @@ function QuizScreen({navigation, route}) {
       <Text>このポケモンはなに？</Text>
       <Text>現在の得点：{totalScore}点</Text>
       <Text>正解すると{thisScore}点獲得</Text>
-      <Text>{trueOrFalse}</Text>
+      <Text style={{ ...styles.TorF, color: trueOrFalse === '正解！' ? 'red' : 'blue' }}>{trueOrFalse}</Text>
       <Text style={styles.text}>ぶんるい：{pokebunrui.genus}</Text>
       <View style={styles.questionWrapper}>
         <View style={styles.resultContainer}>
@@ -278,6 +279,7 @@ function QuizScreen({navigation, route}) {
           value={inputText}
           onChangeText={setInputText}
           placeholder='ここに回答を入力'
+          keyboardType='default'
         />
         
         <TouchableOpacity
@@ -312,6 +314,11 @@ const styles = StyleSheet.create({
     margin: 20,
     fontSize: 16,
     color: '#333',
+  },
+  TorF: {
+    margin: 20,
+    fontSize: 26,
+    fontWeight: 'bold',
   },
   questionWrapper: {
     marginVertical: 20,
